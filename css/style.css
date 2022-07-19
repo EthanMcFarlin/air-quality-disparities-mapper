@@ -55,7 +55,7 @@ body {
      list-style: none;
      height: 80px;
      line-height: 40px;
-     padding: 0 5vw;
+     padding: 0 2vw;
      text-align: center;
  }
 
@@ -67,4 +67,72 @@ body {
 
 #logo-holder {
     transform: translateY(19px);
+}
+
+.map-toggle-label {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+
+}
+
+.map-toggle-label input {
+    opacity: 0;
+    width: 0px;
+    height: 0px;
+}
+
+.map-toggle-span {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #dedede;
+    -webkit-transition: .2s;
+    transition: .2s all ease;
+    border-radius: 3px;
+}
+
+.map-toggle-span:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s cubic-bezier(0,1,0.5,1);
+    border-radius: 3px;
+}
+
+input:checked + .map-toggle-span {
+    background-color: #4A92C4;
+}
+
+input:focus + .map-toggle-span {
+    box-shadow: 0 0 4px #4A92C4;
+}
+
+input:checked + .map-toggle-span:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+.map-toggle-span {
+    border-radius: 34px;
+}
+
+.map-toggle-span:before {
+    border-radius: 50%;
+}
+
+@media only screen and (max-width: 1015px) {
+    #top-nav {
+        height: 140px;
+    }
 }

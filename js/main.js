@@ -11,26 +11,43 @@ require([
 
     esriConfig.apiKey = "AAPKdfcc4a7dcc7e4176a137c38b87516e64P2haNjbiyKdPRWUk4feYG-Es6ebTY3T8bYJRXrSN-2gUKssSU5kF4T6brCoTDrEq";
 
-    const webmap = new WebMap({
-        portalItem: {
-            // id: "7c4d00681b274b229916b8577d90910c"
-            // Option 1 — Choropleth
+/*    // const webmap = new WebMap({
+    //     portalItem: {
+    //         // id: "7c4d00681b274b229916b8577d90910c"
+    //         // Option 1 — Choropleth
+    //
+    //         // id: "af7a507314074b9e857b2ca0bdc3e040"
+    //         // Option 2 — Size and Color
+    //
+    //         // id: "3c232db9e4e84414a51149aecc49317e"
+    //         // Option 3 — Color Ramp
+    //
+    //         // id: "1a65f87408994046a27bd5a6b8bd3003"
+    //         // Option 4 — Improved Color Ramp
+    //
+    //         id: chosen_id
+    //
+    //     }
+    // });*/
 
-            // id: "af7a507314074b9e857b2ca0bdc3e040"
-            // Option 2 — Size and Color
+    const webmapids = [
+        "1a65f87408994046a27bd5a6b8bd3003",
+        "af7a507314074b9e857b2ca0bdc3e040"
 
-            // id: "3c232db9e4e84414a51149aecc49317e"
-            // Option 3 — Color Ramp
+    ];
 
-            id: "1a65f87408994046a27bd5a6b8bd3003"
-            // Option 4 — Improved Color Ramp
-
-        }
+    const webmaps = webmapids.map((webmapid) => {
+        return new WebMap({
+            portalItem: {
+                id: webmapid
+            }
+        });
     });
+
 
     const view = new MapView({
         container: "viewDiv",
-        map: webmap
+        map: webmaps[0]
 
     });
 
@@ -74,6 +91,20 @@ require([
     //     closeOnEsc: false
     // });
     // view.ui.add(expand);
+
+    document.querySelector("#nav-checkbox").addEventListener("click", (event) => {
+
+        var toggleButton = document.getElementById("nav-checkbox");
+
+        if (toggleButton.checked == true) {
+            const webmap = webmaps[1];
+            view.map = webmap;
+        } else {
+            const webmap = webmaps[0];
+            view.map = webmap;
+        }
+    });
+
 
 
 });
