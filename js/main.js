@@ -16,11 +16,14 @@ require([
             // id: "7c4d00681b274b229916b8577d90910c"
             // Option 1 — Choropleth
 
-            id: "af7a507314074b9e857b2ca0bdc3e040"
+            // id: "af7a507314074b9e857b2ca0bdc3e040"
             // Option 2 — Size and Color
 
             // id: "3c232db9e4e84414a51149aecc49317e"
             // Option 3 — Color Ramp
+
+            id: "1a65f87408994046a27bd5a6b8bd3003"
+            // Option 4 — Improved Color Ramp
 
         }
     });
