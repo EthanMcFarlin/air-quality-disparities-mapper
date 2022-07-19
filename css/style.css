@@ -136,3 +136,8 @@ input:checked + .map-toggle-span:before {
         height: 140px;
     }
 }
+
+a, a:hover, a:focus, a:active {
+      text-decoration: none;
+      color: inherit;
+}
