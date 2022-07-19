@@ -1,8 +1,70 @@
 html,
-body,
-#viewDiv {
+body {
     padding: 0;
     margin: 0;
     height: 100%;
     width: 100%;
+    overflow-x: hidden;
+}
+
+#top-nav {
+    padding-left: 2vw;
+    /*box-shadow: 0 16px 20px -8px rgb(149 157 165 / 20%);*/
+    box-shadow: 0 16px 20px -8px rgb(118 175 235 / 20%);
+    width: 100%;
+    height: 90px;
+    /*border-bottom: 1px solid #e8e7ec;*/
+}
+
+.title {
+    font-family: Montserrat;
+    font-weight: 400;
+    font-size: 14pt;
+    margin-left: 40px;
+}
+
+.title > span {
+    font-weight: 800;
+}
+
+
+.nav-element {
+    display: inline-block;
+    margin: auto;
+}
+
+#viewDiv {
+    height: 86%;
+    width: 100%;
+}
+
+.esri-view .esri-view-surface--inset-outline:focus::after {
+    outline: none !important;
+}‍‍‍
+
+#viewDiv, #menu {
+    display: inline-block;
+ }
+
+#subnav {
+    margin-left: 60px;
+ }
+
+#subnav > li {
+     display: inline-block;
+     list-style: none;
+     height: 80px;
+     line-height: 40px;
+     padding: 0 5vw;
+     text-align: center;
+ }
+
+#subnav > li > p:hover {
+    transition: 0.05s all ease;
+    color: #1e90ff;
+    cursor: pointer;
+}
+
+#logo-holder {
+    transform: translateY(19px);
 }
