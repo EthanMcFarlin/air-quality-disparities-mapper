@@ -1,110 +1,119 @@
 require([
     "esri/config",
-    "esri/WebMap",
-    "esri/views/MapView",
-    "esri/widgets/ScaleBar",
-    "esri/widgets/Expand",
-    "esri/widgets/Search",
+    "esri/Map",
+    "esri/views/SceneView",
+    "esri/layers/FeatureLayer",
     "esri/widgets/Legend"
 
-], function(esriConfig, WebMap, MapView, Expand, ScaleBar, Search, Legend) {
+], function(esriConfig, Map, SceneView, FeatureLayer, Legend) {
 
     esriConfig.apiKey = "AAPKdfcc4a7dcc7e4176a137c38b87516e64P2haNjbiyKdPRWUk4feYG-Es6ebTY3T8bYJRXrSN-2gUKssSU5kF4T6brCoTDrEq";
 
-/*    // const webmap = new WebMap({
-    //     portalItem: {
-    //         // id: "7c4d00681b274b229916b8577d90910c"
-    //         // Option 1 — Choropleth
-    //
-    //         // id: "af7a507314074b9e857b2ca0bdc3e040"
-    //         // Option 2 — Size and Color
-    //
-    //         // id: "3c232db9e4e84414a51149aecc49317e"
-    //         // Option 3 — Color Ramp
-    //
-    //         // id: "1a65f87408994046a27bd5a6b8bd3003"
-    //         // Option 4 — Improved Color Ramp
-    //
-    //         id: chosen_id
-    //
-    //     }
-    // });*/
-
-    const webmapids = [
-        "1a65f87408994046a27bd5a6b8bd3003",
-        "af7a507314074b9e857b2ca0bdc3e040"
-
-    ];
-
-    const webmaps = webmapids.map((webmapid) => {
-        return new WebMap({
-            portalItem: {
-                id: webmapid
+    const renderer = {
+        type: "simple",
+        symbol: {
+            type: "polygon-3d",
+            symbolLayers: [
+                {
+                    type: "extrude"
+                }
+            ]
+        },
+        visualVariables: [
+            {
+                type: "size",
+                field: "ec_predict",
+                legendOptions: {
+                    title: "elemental carbon prediction"
+                },
+                stops: [
+                    {
+                        value: 0.24,
+                        size: 10,
+                        label: "<0.24 (𝜇 - 2𝜎)"
+                    },
+                    {
+                        value: 0.87,
+                        size: 25000,
+                        label: ">0.87 (𝜇 + 3𝜎)"
+                    }
+                ]
+            },
+            {
+                type: "color",
+                field: "pct_black",
+                legendOptions: {
+                    title: "% population who identifies as black"
+                },
+                stops: [
+                    {
+                        value: 0.0,
+                        color: "#d1e1ff",
+                        label: "0%"
+                    },
+                    {
+                        value: 1.0,
+                        color: "#144db8",
+                        label: "100%"
+                    }
+                ]
             }
-        });
-    });
+        ]
+    };
+
+    const customLayer = new FeatureLayer({
+        url:
+            "https://services1.arcgis.com/qN3V93cYGMKQCOxL/arcgis/rest/services/MA_16/FeatureServer",
+        renderer: renderer,
+        title: "Air pollution exposure by demographics",
+        popupTemplate: {
+            title: "GEOID: {GEOID10}",
+            content: "{pct_black} represents the percentage of people identifying as African American in 2010 as a decimal.<br><br> " +
+                "{ec_predict} is the elemental carbon prediction, also for the year 2010.",
+            fieldInfos: [
+                {
+                    fieldName: "ec_predict",
+                    format: {
+                        digitSeparator: false,
+                        places: 3
+                    }
+                },
+                {
+                    fieldName: "pct_black",
+                    format: {
+                        digitSeparator: false,
+                        places: 3
+                    }
+                }
+            ]
 
 
-    const view = new MapView({
-        container: "viewDiv",
-        map: webmaps[0]
-
-    });
-
-    const scalebar = new ScaleBar({
-        view: view
-    });
-    view.ui.add(scalebar, "bottom-left");
-
-    const legend = new Legend ({
-        view: view
-    });
-    view.ui.add(legend, "top-right");
-
-
-    const searchWidget = new Search({
-         view: view
-     });
-     view.ui.add(searchWidget, {
-         position: "bottom-right",
-         index: 2
-     });
-
-    // view.ui.add(
-    //     new Expand([{
-    //         view: view,
-    //         content: new Search({ view: view }),
-    //         group: "top-left",
-    //         expanded: true,
-    //         expandIconClass: "esri-icon-layer-list"
-    //     }]), "top-left");
-
-    // const searchWidget = new Search({
-    //     view: view
-    // });
-    //
-    // let expand = new Expand({
-    //     view: view,
-    //     content: searchWidget,
-    //     group: "top-right",
-    //     expanded: true,
-    //     closeOnEsc: false
-    // });
-    // view.ui.add(expand);
-
-    document.querySelector("#nav-checkbox").addEventListener("click", (event) => {
-
-        var toggleButton = document.getElementById("nav-checkbox");
-
-        if (toggleButton.checked == true) {
-            const webmap = webmaps[1];
-            view.map = webmap;
-        } else {
-            const webmap = webmaps[0];
-            view.map = webmap;
         }
     });
 
+    const map = new Map({
+        basemap: "gray-vector",
+        layers: [customLayer]
+    });
 
+    const view = new SceneView({
+        container: "viewDiv",
+        map: map,
+        camera: {
+            position: {
+                latitude: 41.3601,
+                longitude: -71.389,
+                z: 25560
+            },
+            tilt: 80,
+            heading: 10
+        }
+    });
+
+    const legend = new Legend({
+        view: view
+    });
+
+    view.ui.add(legend, "bottom-right");
 
 });
