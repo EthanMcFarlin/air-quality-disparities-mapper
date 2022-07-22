@@ -62,7 +62,6 @@ body {
 #subnav > li > p:hover {
     transition: 0.05s all ease;
     color: #1e90ff;
-    cursor: pointer;
 }
 
 #logo-holder {
@@ -74,8 +73,6 @@ body {
     display: inline-block;
     width: 60px;
     height: 34px;
-
-
 }
 
 .map-toggle-label input {
@@ -141,4 +138,19 @@ input:checked + .map-toggle-span:before {
 a, a:hover, a:focus, a:active {
       text-decoration: none;
       color: inherit;
+}
+
+a:hover {
+    cursor: pointer;
+}
+
+.left-arrow {
+    border: solid #999999;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 3px;
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+    margin-right: 10px;
+    transform: translateY(-2px);
 }

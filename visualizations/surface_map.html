@@ -25,8 +25,7 @@
     <link rel="stylesheet" href="https://js.arcgis.com/4.24/esri/themes/light/main.css" />
 
     <!-- Local Styles -->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/landing_page.css">
+    <link rel="stylesheet" href="../css/style.css">
 
     <!-- ArcGIS Javascript API Script -->
     <script src="https://js.arcgis.com/4.24/"></script>
@@ -36,47 +35,26 @@
 <body>
 
 <div id="top-nav">
-    <div class="nav-element" id="logo-holder">
-        <img src="img/logo.jpg">
-    </div>
+    <a href="../index.html"><div class="nav-element" id="logo-holder">
+        <img src="../img/logo.jpg">
+    </div></a>
 
     <div class="nav-element">
         <h1 class="title"><span>NSAPH</span> Air Quality Disparities Mapper</h1>
     </div>
 
     <ul id="subnav" class="nav-element">
-        <li><p><a href="https://docs.google.com/document/d/1p_EA-VyzVWx9fLsOlgo5c6FkFCw75ELpunqF_WYglxg/edit?usp=sharing" target="_blank">Progress Checklist</a></p></li>
-        <li><p><a href="https://forms.gle/QELD71MJmbvEtfmC8" target="_blank">Feedback Form</a></p></li>
-        <li><p><a href="https://www.hsph.harvard.edu/nsaph/" target="_blank">Lab Website</a></p></li>
+        <li>
+            <a href="../index.html"><p><i class="left-arrow"></i>Return to Home Page</p></a>
+        </li>
     </ul>
 
 </div>
 
-<div id="home-header">
-    <div id="call-to-action">
-        <h1 class="main-header-text">Unpack the state of air <br>pollution in <span class="text-emphasis">your community</span></h1>
-        <div class="visualization-selection-container">
-            <select class="visualization-selection" id="visualization_controller">
-                <option value="surface-map">3D Surface Map</option>
-                <option value="bivariate-choropleth">Bivariate Choropleth</option>
-                <option value="bubble-map">Bubble Map</option>
-            </select>
-            <button class="visualization-selection-button" type="button" onclick="pageRedirect()">LAUNCH APP</button>
-        </div>
-
-        <img src="img/phone_and_tablet_small.png">
-<!--        <div class="devices-mockup"></div>-->
-
-
-    </div>
-</div>
-
-<div id="features">
-
-</div>
+<div id="viewDiv"></div>
 
 <!-- Local Scripts -->
-<script src="js/landing_page.js"></script>
+<script src="../js/main.js"></script>
 
 <!-- Reference code for this site's scripts was sourced from the ArcGIS for Javascript 4.24 documentation, available
  here: https://developers.arcgis.com/javascript/latest/

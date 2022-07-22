@@ -1,3 +1,5 @@
+console.log("loaded successfully");
+
 require([
     "esri/config",
     "esri/WebMap",
