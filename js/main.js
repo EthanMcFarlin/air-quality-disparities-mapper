@@ -29,7 +29,7 @@ require([
                 stops: [
                     {
                         value: 0.22,
-                        size: 2000,
+                        size: 4000,
                         label: "<0.22 (10th percentile)"
                     },
                     {
