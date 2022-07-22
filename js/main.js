@@ -24,18 +24,18 @@ require([
                 type: "size",
                 field: "predicted",
                 legendOptions: {
-                    title: "predicted element carbon measure"
+                    title: "predicted element carbon (height)"
                 },
                 stops: [
                     {
-                        value: 0.39,
-                        size: 10000,
-                        label: "<0.39 (𝜇)"
+                        value: 0.22,
+                        size: 2000,
+                        label: "<0.22 (10th percentile)"
                     },
                     {
-                        value: 0.91,
-                        size: 500000,
-                        label: ">0.91 (𝜇 + 3.5𝜎)"
+                        value: 0.66,
+                        size: 200000,
+                        label: ">0.66 (95th percentile)"
                     }
                 ]
             },
@@ -43,7 +43,7 @@ require([
                 type: "color",
                 field: "pct_black",
                 legendOptions: {
-                    title: "% population who identifies as black"
+                    title: "% population identifying as black (color) "
                 },
                 stops: [
                     {
