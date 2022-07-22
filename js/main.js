@@ -22,20 +22,20 @@ require([
         visualVariables: [
             {
                 type: "size",
-                field: "ec_predict",
+                field: "predicted",
                 legendOptions: {
-                    title: "elemental carbon prediction"
+                    title: "predicted element carbon measure"
                 },
                 stops: [
                     {
-                        value: 0.24,
-                        size: 10,
-                        label: "<0.24 (𝜇 - 2𝜎)"
+                        value: 0.39,
+                        size: 10000,
+                        label: "<0.39 (𝜇)"
                     },
                     {
-                        value: 0.87,
-                        size: 25000,
-                        label: ">0.87 (𝜇 + 3𝜎)"
+                        value: 0.91,
+                        size: 500000,
+                        label: ">0.91 (𝜇 + 3.5𝜎)"
                     }
                 ]
             },
@@ -63,16 +63,21 @@ require([
 
     const customLayer = new FeatureLayer({
         url:
-            "https://services1.arcgis.com/qN3V93cYGMKQCOxL/arcgis/rest/services/MA_16/FeatureServer",
+            // "https://services1.arcgis.com/qN3V93cYGMKQCOxL/arcgis/rest/services/MA_16/FeatureServer",
+            // "https://services1.arcgis.com/qN3V93cYGMKQCOxL/arcgis/rest/services/us_counties_4/FeatureServer",
+            // "https://services1.arcgis.com/qN3V93cYGMKQCOxL/arcgis/rest/services/test33/FeatureServer",
+            // "https://services1.arcgis.com/qN3V93cYGMKQCOxL/arcgis/rest/services/test38/FeatureServer",
+            "https://services1.arcgis.com/qN3V93cYGMKQCOxL/arcgis/rest/services/us_counties_19/FeatureServer",
         renderer: renderer,
         title: "Air pollution exposure by demographics",
+        outFields: ["*"],
         popupTemplate: {
-            title: "GEOID: {GEOID10}",
-            content: "{pct_black} represents the percentage of people identifying as African American in 2010 as a decimal.<br><br> " +
-                "{ec_predict} is the elemental carbon prediction, also for the year 2010.",
+            title: "{NAMELSAD10}",
+            content: "{pct_black} represents the percentage of people identifying as African American in 2010 as a decimal" +
+                "<br><br>{predicted} is the predicted measure of element carbon, also in 2010.",
             fieldInfos: [
                 {
-                    fieldName: "ec_predict",
+                    fieldName: "predicted",
                     format: {
                         digitSeparator: false,
                         places: 3
@@ -88,7 +93,7 @@ require([
             ]
 
 
-        }
+        },
     });
 
     const map = new Map({
@@ -101,11 +106,11 @@ require([
         map: map,
         camera: {
             position: {
-                latitude: 41.3601,
-                longitude: -71.389,
-                z: 25560
+                latitude: 20.8282,
+                longitude: -98.5795,
+                z: 5000101
             },
-            tilt: 80,
+            tilt: 20,
             heading: 10
         }
     });
