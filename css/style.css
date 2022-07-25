@@ -154,3 +154,44 @@ a:hover {
     margin-right: 10px;
     transform: translateY(-2px);
 }
+
+#variable-selector {
+    width: 320px;
+    background: #fff;
+    padding: 20px;
+    padding-left:30px;
+}
+
+#demographic-holder {
+    margin-bottom: 20px;
+}
+
+.variable-holder {
+    height: 120px;
+    overflow-y: scroll;
+    scrollbar-width: auto;
+    scrollbar-color: #c9c9c9 #ffffff;
+}
+
+.variable-holder > label {
+    padding: 0.5em;
+}
+
+.variable-holder::-webkit-scrollbar {
+    width: 16px;
+    height: 20px;
+}
+
+.variable-holder::-webkit-scrollbar-track {
+    background: #ffffff;
+}
+
+.variable-holder::-webkit-scrollbar-thumb {
+    background-color: #c9c9c9;
+    border-radius: 10px;
+    border: 3px solid #ffffff;
+}
+
+.menu-title {
+    margin-left:-8px;
+}
