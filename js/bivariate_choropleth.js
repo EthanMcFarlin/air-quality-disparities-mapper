@@ -25,7 +25,7 @@ require([
         // "https://services1.arcgis.com/qN3V93cYGMKQCOxL/arcgis/rest/services/test33/FeatureServer",
         // "https://services1.arcgis.com/qN3V93cYGMKQCOxL/arcgis/rest/services/test38/FeatureServer",
             "https://services1.arcgis.com/qN3V93cYGMKQCOxL/arcgis/rest/services/us_counties_19/FeatureServer",
-        title: "Air pollution exposure by demographics",
+        title: "Air pollution exposure by demographics (2010)",
         outFields: ["*"],
         popupTemplate: {
             title: "{NAMELSAD10}",
@@ -60,8 +60,8 @@ require([
     const view = new MapView({
         container: "viewDiv",
         map: map,
-        center: [-85.0502, 33.125524],
-        zoom: 5
+        center: [-90.1, 40.4],
+        zoom: 3
     });
 
     const legend = new Legend({
