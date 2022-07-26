@@ -157,7 +157,7 @@ require([
                 setDemographicVariable("pct_age_un", "% population under the age of 5 (color)", 0.00, 0.2, "0%", "20%", "represents the percentage (as a decimal) of the population in this county under the age of 5 in 2010.")
                 break;
             case 'pct_age_over_85':
-                setDemographicVariable("pct_age_ov", "% population over the age of 85 (color)", 0.0, 0.2, "0%", "20%", "represents the percentage (as a decimal) of the population in this county over the age of 85 in 2010.")
+                setDemographicVariable("pct_age_ov", "% population over the age of 85 (color)", 0.0, 0.1, "0%", "10%", "represents the percentage (as a decimal) of the population in this county over the age of 85 in 2010.")
                 break;
             case 'pct_white':
                 setDemographicVariable("pct_white", "% population identifying as white (color)", 0.0, 1.0, "0%", "100%", "represents the percentage (as a decimal) of the population in this county identifying as white in 2010.")
@@ -172,7 +172,7 @@ require([
                 setDemographicVariable("pct_asian", "% population identifying as asian (color)", 0.0, 0.4, "0%", "40%", "represents the percentage (as a decimal) of the population in this county identifying as asian in 2010.")
                 break;
             case 'pct_two_or_more_races':
-                setDemographicVariable("pct_two_or", "% population identifying as two or more races (color)", 0.0, 1.0, "0%", "100%", "represents the percentage (as a decimal) of the population in this county identifying as two or more races in 2010.")
+                setDemographicVariable("pct_two_or", "% population identifying as two or more races (color)", 0.0, 0.1, "0%", "10%", "represents the percentage (as a decimal) of the population in this county identifying as two or more races in 2010.")
                 break;
             case 'pct_hispanic':
                 setDemographicVariable("pct_hispan", "% population identifying as hispanic (color)", 0.0, 1.0, "0%", "100%", "represents the percentage (as a decimal) of the population in this county identifying as hispanic in 2010.")
@@ -181,10 +181,10 @@ require([
                 setDemographicVariable("n_househol", "number of households (color)", 0.0, 100000.0, "0 households", "100,000 households", "represents the number of households in this county in 2010.")
                 break;
             case 'pct_households_single_father':
-                setDemographicVariable("pct_househ", "% households with a single father (color)", 0.0, 1.0, "0%", "100%", "represents the percentage (as a decimal) of households in this county with a single father in 2010.")
+                setDemographicVariable("pct_househ", "% households with a single father (color)", 0.01, 0.15, "5%", "15%", "represents the percentage (as a decimal) of households in this county with a single father in 2010.")
                 break;
             case 'pct_households_single_mother':
-                setDemographicVariable("pct_hous_1", "% households with a single mother (color)", 0.0, 1.0, "0%", "100%", "represents the percentage (as a decimal) of households in this county with a single mother in 2010.")
+                setDemographicVariable("pct_hous_1", "% households with a single mother (color)", 0.1, 0.5, "10%", "50%", "represents the percentage (as a decimal) of households in this county with a single mother in 2010.")
                 break;
             case 'n_housing_units':
                 setDemographicVariable("n_housing_", "number of housing units (color)", 0.0, 100000.0, "0 housing units", "100,000 housing unnits", "represents the number of housing units in this county in 2010.")
