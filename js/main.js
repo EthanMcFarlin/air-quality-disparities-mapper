@@ -5,7 +5,6 @@ let defaultUpperStop = 1.0;
 let defaultLowerLabel = "0%";
 let defaultUpperLabel = "100%";
 
-
 require([
     "esri/config",
     "esri/Map",
