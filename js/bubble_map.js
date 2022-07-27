@@ -1,9 +1,18 @@
+let defaultSizeField = "ec_pred"
+let defaultSizeLegend = "predicted elemental carbon (height)";
+let defaultSizeLowerStop = 0.17;
+let defaultSizeUpperStop = 0.51;
+let defaultSizeLowerLabel = "<0.17 (10th percentile)";
+let defaultSizeUpperLabel = ">0.51 (95th percentile)";
+let defaultSizePopupText = "is the predicted measure of elemental carbon, also in 2010.";
+
 let defaultColorField = "pct_black";
-let defaultLegend = "% population identifying as black (color) ";
-let defaultLowerStop = 0.0;
-let defaultUpperStop = 1.0;
-let defaultLowerLabel = "0%";
-let defaultUpperLabel = "100%";
+let defaultColorLegend = "% population identifying as black (color) ";
+let defaultColorLowerStop = 0.0;
+let defaultColorUpperStop = 1.0;
+let defaultColorLowerLabel = "0%";
+let defaultColorUpperLabel = "100%";
+let defaultColorPopupText = "represents the percentage (as a decimal) of the population in this county identifying as African American in 2010.";
 
 require([
     "esri/config",
@@ -31,20 +40,20 @@ require([
         visualVariables: [
             {
                 type: "size",
-                field: "predicted",
+                field: defaultSizeField,
                 legendOptions: {
-                    title: "predicted element carbon (height)"
+                    title: defaultSizeLegend
                 },
                 stops: [
                     {
-                        value: 0.22,
+                        value: defaultSizeLowerStop,
                         size: 4,
-                        label: "<0.22 (10th percentile)"
+                        label: defaultSizeLowerLabel
                     },
                     {
-                        value: 0.66,
-                        size: 20,
-                        label: ">0.66 (95th percentile)"
+                        value: defaultSizeUpperStop,
+                        size: 15,
+                        label: defaultSizeUpperLabel
                     }
                 ]
             },
@@ -52,18 +61,18 @@ require([
                 type: "color",
                 field: defaultColorField,
                 legendOptions: {
-                    title: defaultLegend
+                    title: defaultColorLegend
                 },
                 stops: [
                     {
-                        value: defaultLowerStop,
+                        value: defaultColorLowerStop,
                         color: "#d1e1ff",
-                        label: defaultLowerLabel
+                        label: defaultColorLowerLabel
                     },
                     {
-                        value: defaultUpperStop,
+                        value: defaultColorUpperStop,
                         color: "#144db8",
-                        label: defaultUpperLabel
+                        label: defaultColorUpperLabel
                     }
                 ]
             }
@@ -76,17 +85,18 @@ require([
         // "https://services1.arcgis.com/qN3V93cYGMKQCOxL/arcgis/rest/services/us_counties_4/FeatureServer",
         // "https://services1.arcgis.com/qN3V93cYGMKQCOxL/arcgis/rest/services/test33/FeatureServer",
         // "https://services1.arcgis.com/qN3V93cYGMKQCOxL/arcgis/rest/services/test38/FeatureServer",
-            "https://services1.arcgis.com/qN3V93cYGMKQCOxL/arcgis/rest/services/us_counties_19/FeatureServer",
+        //  "https://services1.arcgis.com/qN3V93cYGMKQCOxL/arcgis/rest/services/us_counties_19/FeatureServer",
+        "https://services1.arcgis.com/qN3V93cYGMKQCOxL/arcgis/rest/services/us_counties_22/FeatureServer",
         renderer: renderer,
         title: "Air pollution exposure by demographics (2010)",
         outFields: ["*"],
         popupTemplate: {
             title: "{NAMELSAD10}",
             content: "{pct_black} represents the percentage of people identifying as African American in 2010 as a decimal" +
-                "<br><br>{predicted} is the predicted measure of element carbon, also in 2010.",
+                "<br><br>{ec_pred} is the predicted measure of element carbon, also in 2010.",
             fieldInfos: [
                 {
-                    fieldName: "predicted",
+                    fieldName: "ec_pred",
                     format: {
                         digitSeparator: false,
                         places: 3
@@ -113,8 +123,8 @@ require([
     const view = new MapView({
         container: "viewDiv",
         map: map,
-        center: [-85.0502, 33.125524],
-        zoom: 5
+        center: [-90.1, 40.4],
+        zoom: 3
     });
 
     const legend = new Legend({
@@ -141,7 +151,7 @@ require([
 
         switch (changedField.id) {
             case 'population':
-                setDemographicVariable("population", "population", 0.0, 500000, "0 people", "500,000 people", "represents the population in this county in 2010.")
+                setDemographicVariable("population", "population (color)", 0.0, 500000, "0 people", "500,000 people", "represents the population in 2010.")
                 break;
             case 'pct_female':
                 console.log('pct_female 2');
@@ -151,7 +161,7 @@ require([
                 setDemographicVariable("pct_age_un", "% population under the age of 5 (color)", 0.00, 0.2, "0%", "20%", "represents the percentage (as a decimal) of the population in this county under the age of 5 in 2010.")
                 break;
             case 'pct_age_over_85':
-                setDemographicVariable("pct_age_ov", "% population over the age of 85 (color)", 0.0, 0.2, "0%", "20%", "represents the percentage (as a decimal) of the population in this county over the age of 85 in 2010.")
+                setDemographicVariable("pct_age_ov", "% population over the age of 85 (color)", 0.0, 0.1, "0%", "10%", "represents the percentage (as a decimal) of the population in this county over the age of 85 in 2010.")
                 break;
             case 'pct_white':
                 setDemographicVariable("pct_white", "% population identifying as white (color)", 0.0, 1.0, "0%", "100%", "represents the percentage (as a decimal) of the population in this county identifying as white in 2010.")
@@ -166,7 +176,7 @@ require([
                 setDemographicVariable("pct_asian", "% population identifying as asian (color)", 0.0, 0.4, "0%", "40%", "represents the percentage (as a decimal) of the population in this county identifying as asian in 2010.")
                 break;
             case 'pct_two_or_more_races':
-                setDemographicVariable("pct_two_or", "% population identifying as two or more races (color)", 0.0, 1.0, "0%", "100%", "represents the percentage (as a decimal) of the population in this county identifying as two or more races in 2010.")
+                setDemographicVariable("pct_two_or", "% population identifying as two or more races (color)", 0.0, 0.1, "0%", "10%", "represents the percentage (as a decimal) of the population in this county identifying as two or more races in 2010.")
                 break;
             case 'pct_hispanic':
                 setDemographicVariable("pct_hispan", "% population identifying as hispanic (color)", 0.0, 1.0, "0%", "100%", "represents the percentage (as a decimal) of the population in this county identifying as hispanic in 2010.")
@@ -175,10 +185,10 @@ require([
                 setDemographicVariable("n_househol", "number of households (color)", 0.0, 100000.0, "0 households", "100,000 households", "represents the number of households in this county in 2010.")
                 break;
             case 'pct_households_single_father':
-                setDemographicVariable("pct_househ", "% households with a single father (color)", 0.0, 1.0, "0%", "100%", "represents the percentage (as a decimal) of households in this county with a single father in 2010.")
+                setDemographicVariable("pct_househ", "% households with a single father (color)", 0.01, 0.15, "5%", "15%", "represents the percentage (as a decimal) of households in this county with a single father in 2010.")
                 break;
             case 'pct_households_single_mother':
-                setDemographicVariable("pct_hous_1", "% households with a single mother (color)", 0.0, 1.0, "0%", "100%", "represents the percentage (as a decimal) of households in this county with a single mother in 2010.")
+                setDemographicVariable("pct_hous_1", "% households with a single mother (color)", 0.1, 0.5, "10%", "50%", "represents the percentage (as a decimal) of households in this county with a single mother in 2010.")
                 break;
             case 'n_housing_units':
                 setDemographicVariable("n_housing_", "number of housing units (color)", 0.0, 100000.0, "0 housing units", "100,000 housing unnits", "represents the number of housing units in this county in 2010.")
@@ -197,25 +207,26 @@ require([
     (field, legend, lower_stop, upper_stop, lower_label, upper_label, popup_text) {
         console.log("check: setDemographicVariable");
         defaultColorField = field;
-        defaultLegend = legend;
-        defaultLowerStop = lower_stop;
-        defaultUpperStop = upper_stop;
-        defaultLowerLabel = lower_label;
-        defaultUpperLabel = upper_label;
+        defaultColorLegend = legend;
+        defaultColorLowerStop = lower_stop;
+        defaultColorUpperStop = upper_stop;
+        defaultColorLowerLabel = lower_label;
+        defaultColorUpperLabel = upper_label;
+        defaultColorPopupText = popup_text;
 
-        refreshRenderer(field, legend, lower_stop, upper_stop, lower_label, upper_label, popup_text);
+        refreshDemographicRenderer(field, legend, lower_stop, upper_stop, lower_label, upper_label, popup_text);
     }
 
-    function refreshRenderer(field, legend, lower_stop, upper_stop, lower_label, upper_label, popup_text) {
+    function refreshDemographicRenderer(field, legend, lower_stop, upper_stop, lower_label, upper_label, popup_text) {
         console.log("check: refresh rendererer");
 
         customLayer.popupTemplate = {
             title: "{NAMELSAD10}",
             content: "{" + field + "}" + " " + popup_text +
-                "<br><br>{predicted} is the predicted measure of element carbon, also in 2010.",
+                "<br><br>" + "{" + defaultSizeField + "}" + " " + defaultSizePopupText,
             fieldInfos: [
                 {
-                    fieldName: "predicted",
+                    fieldName: defaultSizeField,
                     format: {
                         digitSeparator: false,
                         places: 3
@@ -250,6 +261,95 @@ require([
                 {
                     value: upper_stop,
                     color: "#144db8",
+                    label: upper_label
+                }
+            ]
+        customLayer.renderer = new_renderer;
+    }
+
+    const pollutionHolder = document.getElementById("pollution-holder");
+    pollutionHolder.addEventListener('change', function (e) {
+        let changedField = e.target;
+
+        switch (changedField.id) {
+            case 'ec':
+                setPollutionVariable("ec_pred", "EC prediction (height)", 0.22, 0.66, "<0.17 (10th percentile)", ">0.51 (95th percentile)", "is the predicted measure of ammonium, also in 2010.")
+                break;
+            case 'ammonium':
+                setPollutionVariable("nh4_predic", "NH4+ prediction (height)", 0.31, 1.34, "<0.31 (10th percentile)", ">1.34 (95th percentile)", "is the predicted measure of ammonium, also in 2010.")
+                break;
+            case 'nitrate':
+                setPollutionVariable("no3_predic", "NO3- prediction (height)", 0.40, 2.08, "<0.40 (10th percentile)", ">2.08 (95th percentile)", "is the predicted measure of nitrate, also in 2010.")
+                break;
+            case 'oc':
+                setPollutionVariable("oc_predict", "OC prediction (height)", 0.98, 2.28, "<0.98 (10th percentile)", ">2.28 (95th percentile)", "is the predicted measure of organic carbon, also in 2010.")
+                break;
+            case 'sulfate':
+                setPollutionVariable("so42_predi", "SO42- prediction (height)", 0.68, 3.01, "<0.68 (10th percentile)", ">3.01 (95th percentile)", "is the predicted measure of sulfate, also in 2010.")
+                break;
+        }
+
+    });
+
+    function setPollutionVariable
+    (field, legend, lower_stop, upper_stop, lower_label, upper_label, popup_text) {
+        console.log("check: setPollutionVariable");
+        defaultSizeField = field;
+        defaultSizeLegend = legend;
+        defaultSizeLowerStop = lower_stop;
+        defaultSizeUpperStop = upper_stop;
+        defaultSizeLowerLabel = lower_label;
+        defaultSizeUpperLabel = upper_label;
+        defaultSizePopupText = popup_text;
+
+        refreshPollutionRenderer(field, legend, lower_stop, upper_stop, lower_label, upper_label, popup_text);
+    }
+
+    function refreshPollutionRenderer(field, legend, lower_stop, upper_stop, lower_label, upper_label, popup_text) {
+        console.log("check: refresh pollution rendererer");
+
+        customLayer.popupTemplate = {
+            title: "{NAMELSAD10}",
+            content: "{" + defaultColorField + "}" + " " + defaultColorPopupText +
+                "<br><br>" + "{" + field + "}" + " " + popup_text,
+            fieldInfos: [
+                {
+                    fieldName: field,
+                    format: {
+                        digitSeparator: false,
+                        places: 3
+                    }
+                },
+                {
+                    fieldName: defaultColorField,
+                    format: {
+                        digitSeparator: false,
+                        places: 3
+                    }
+                }
+            ]
+
+
+        };
+
+        let new_renderer = customLayer.renderer.clone();
+        const sizeVariable = new_renderer.visualVariables[0];
+        sizeVariable.field = field;
+        sizeVariable.symbol = circleShape;
+        sizeVariable.legendOptions =
+            {
+                title: legend
+            }
+        sizeVariable.stops =
+            [
+                {
+                    value: lower_stop,
+                    size: 4,
+                    label: lower_label
+                },
+                {
+                    value: upper_stop,
+                    size: 15,
                     label: upper_label
                 }
             ]
