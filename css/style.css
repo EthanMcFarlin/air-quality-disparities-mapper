@@ -59,9 +59,13 @@ body {
      text-align: center;
  }
 
+#subnav > li > p {
+    font-family: Open Sans;
+}
+
 #subnav > li > p:hover {
     transition: 0.05s all ease;
-    color: #1e90ff;
+    color: #9052F9;
 }
 
 #logo-holder {
