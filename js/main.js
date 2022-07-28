@@ -91,7 +91,7 @@ require([
         popupTemplate: {
             title: "{NAMELSAD10}",
             content: "{pct_black} represents the percentage (as a decimal) of the population in this county identifying as African American in 2010." +
-                "<br><br>{ec_pred} is the predicted measure of element carbon, also in 2010.",
+                "<br><br>{ec_pred} is the predicted measure of elemental carbon, also in 2010.",
             fieldInfos: [
                 {
                     fieldName: "ec_pred",
