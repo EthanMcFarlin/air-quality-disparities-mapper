@@ -40,7 +40,7 @@ require([
         popupTemplate: {
             title: "{NAMELSAD10}",
             content: "{pct_black} represents the percentage of people identifying as African American in 2010 as a decimal" +
-                "<br><br>{ec_pred} is the predicted measure of element carbon, also in 2010.",
+                "<br><br>{ec_pred} is the predicted measure of elemental carbon, also in 2010.",
             fieldInfos: [
                 {
                     fieldName: "ec_pred",
