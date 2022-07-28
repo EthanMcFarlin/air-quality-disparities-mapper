@@ -63,7 +63,7 @@ require([
     });
 
     const map = new Map({
-        basemap: "osk",
+        basemap: "gray-vector",
         layers: [customLayer]
     });
 
