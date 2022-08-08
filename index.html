@@ -55,9 +55,9 @@
         </div>
 
         <ul id="subnav" class="nav-element">
-            <li><p><a href="https://docs.google.com/document/d/1p_EA-VyzVWx9fLsOlgo5c6FkFCw75ELpunqF_WYglxg/edit?usp=sharing" target="_blank">Progress Checklist</a></p></li>
-            <li><p><a href="https://forms.gle/QELD71MJmbvEtfmC8" target="_blank">Feedback Form</a></p></li>
             <li><p><a href="https://www.hsph.harvard.edu/nsaph/" target="_blank">Lab Website</a></p></li>
+            <li><p><a href="https://docs.google.com/document/d/1p_EA-VyzVWx9fLsOlgo5c6FkFCw75ELpunqF_WYglxg/edit?usp=sharing" target="_blank">Changelog</a></p></li>
+            <li><p><a onclick="modalPopup();">Research Team</a></p></li>
         </ul>
 
     </div>
@@ -145,7 +145,83 @@
         </div>
     </div>
 
-    <div class="landing-page-footer">
+    <div id="landing-page-footer">
+    </div>
+
+    <div id="sidebar-popup">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <a class="close-button" onclick="closeModal()">✕</a>
+                </div>
+            </div>
+            <div class="row portrait-row">
+                <div class="col portrait-col">
+                    <img src="img/portrait_1.png" style="width: 225px; height: auto;">
+                    <h4 class="portrait-title">Ethan McFarlin</h4>
+                    <h5 class="portrait-subtitle">Web App Creator</h5>
+                    <p class="portrait-paragraph">Ethan is an undergraduate at Harvard College studying Computer Science.</p>
+                    <div class="portrait-icon">
+                        <a href="https://www.linkedin.com/in/ethan-mcfarlin/?trk=public_profile_browsemap" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+                    </div>
+                    <div class="portrait-icon">
+                        <a href="https://ethanmcfarlin.github.io/" target="_blank"><i class="fas fa-link"></i></a>
+                    </div>
+                </div>
+                <div class="col portrait-col">
+                    <img src="img/portrait_2.png" style="width: 225px; height: auto;">
+                    <h4 class="portrait-title">Edgar Castro</h4>
+                    <h5 class="portrait-subtitle">Data Scientist</h5>
+                    <p class="portrait-paragraph">Edgar is a PhD student at the Harvard T.H. Chan School of Public Health.</p>
+                    <div class="portrait-icon">
+                        <a href="https://twitter.com/netwt187g" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+                    </div>
+                    <div class="portrait-icon">
+                        <a href="https://www.hsph.harvard.edu/nsaph/people/edgar-castro/" target="_blank"><i class="fas fa-link"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="row portrait-row">
+                <div class="col portrait-col">
+                    <img src="img/portrait_3.png" style="width: 225px; height: auto;">
+                    <h4 class="portrait-title">Dr. Falco Bargagli Stoffi </h4>
+                    <h5 class="portrait-subtitle">Project Adviser</h5>
+                    <p class="portrait-paragraph">Falco is a Postdoctoral Researcher at the Harvard T.H. Chan School of Public Health.</p>
+                    <div class="portrait-icon">
+                        <a href="https://twitter.com/falcobargagli?lang=en" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+                    </div>
+                    <div class="portrait-icon">
+                        <a href="https://www.falcobargaglistoffi.com/" target="_blank"><i class="fas fa-link"></i></a>
+                    </div>
+                </div>
+                <div class="col portrait-col">
+                    <img src="img/portrait_4.png" style="width: 225px; height: auto;">
+                    <h4 class="portrait-title">Dr. Heresh Amini</h4>
+                    <h5 class="portrait-subtitle">Project Adviser</h5>
+                    <p class="portrait-paragraph">Heresh is an Assistant Professor at the University of Copenhagen, Denmark.</p>
+                    <div class="portrait-icon">
+                        <a href="https://www.linkedin.com/in/heresh-amini-570436162/?originalSubdomain=dk" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+                    </div>
+                    <div class="portrait-icon">
+                        <a href="https://publichealth.ku.dk/staff/?pure=en/persons/647474" target="_blank"><i class="fas fa-link"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="row portrait-row">
+                <div class="col portrait-col">
+                    <img src="img/portrait_5.png" style="width: 225px; height: auto;">
+                    <h4 class="portrait-title">Dr. Francesca Dominici </h4>
+                    <h5 class="portrait-subtitle">Project Adviser</h5>
+                    <p class="portrait-paragraph">Francesca is a Professor at the Harvard T.H. Chan School of Public Health.</p>
+                    <div class="portrait-icon">
+                        <a href="https://www.linkedin.com/in/francesca-dominici-39684b57/" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+                    </div>
+                    <div class="portrait-icon">
+                        <a href="https://www.hsph.harvard.edu/francesca-dominici/" target="_blank"><i class="fas fa-link"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
 </div>

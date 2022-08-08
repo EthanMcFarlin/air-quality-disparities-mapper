@@ -11,3 +11,13 @@ function pageRedirect () {
     }
 
 }
+
+function modalPopup() {
+    let sideBar = document.getElementById("sidebar-popup");
+    sideBar.style.display = "block";
+}
+
+function closeModal() {
+    let sideBar = document.getElementById("sidebar-popup");
+    sideBar.style.display = "none";
+}

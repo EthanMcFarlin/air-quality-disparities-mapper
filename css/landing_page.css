@@ -237,3 +237,89 @@
     width: 100%;
     background: #333333;
 }
+
+#sidebar-popup {
+    height: 100%;
+    width: 600px;
+    background: white;
+    position: fixed;
+    top: 0;
+    right: 0;
+    box-shadow: 0 0 85px rgb(90 86 130 / 20%);
+    /*transition: display 1s linear;*/
+    display: none;
+    overflow-y: auto;
+    padding-bottom: 100px;
+    padding-top: 20px;
+}
+
+.portrait-row {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.portrait-col {
+    max-width: 300px;
+}
+
+.portrait-title, .portrait-subtitle {
+    font-family: Montserrat;
+}
+
+.portrait-title {
+    font-weight: 800;
+    font-size: 14pt;
+}
+
+.portrait-subtitle {
+    font-weight: 400;
+    font-size: 12pt;
+}
+
+.portrait-paragraph {
+    font-family: Open Sans;
+    font-weight: 500;
+    color: #696969;
+    font-size: 11pt;
+}
+
+.close-button {
+    font-family: Montserrat;
+    font-weight: 800;
+    cursor: pointer;
+    margin-left: 35px;
+}
+
+.close-button:hover {
+    opacity: 0.6;
+    transition: opacity 0.1s ease-in-out;
+}
+
+.portrait-icon {
+    color: #6353F4;
+    background: #faf7fc;
+
+    border-radius: 8px;
+    display: inline-block;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+.portrait-icon:hover {
+    opacity: 0.6;
+    transition: opacity 0.1s ease-in-out;
+}
+
+@media only screen and (max-width: 768px) {
+    #sidebar-popup {
+        width: 300px;
+    }
+
+    .portrait-icon {
+        margin-bottom: 25px;
+    }
+}
