@@ -234,3 +234,16 @@ a:hover {
     /*border-top: 8px solid #E8F0FC;*/
 }
 
+#information-menu {
+    width: 350px;
+    background: #fff;
+    padding: 20px;
+    padding-left:30px;
+    height: 300px;
+    overflow-y: scroll;
+}
+
+.to-home-link:hover {
+    opacity: 0.6;
+    transition: opacity 0.1s ease-in-out;
+}

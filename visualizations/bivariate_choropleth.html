@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Bivariate Choropleth | NSAPH Air Quality Disparities Mapper</title>
+  <title>Bivariate Choropleth | NSAPH Air Pollution Disparities Mapper</title>
 
   <!-- Favicon -->
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -43,12 +43,12 @@
   </div></a>
 
   <div class="nav-element">
-    <h1 class="title"><span>NSAPH</span> Air Quality Disparities Mapper</h1>
+    <h1 class="title"><span>NSAPH</span> Air Pollution Disparities Mapper</h1>
   </div>
 
   <ul id="subnav" class="nav-element">
     <li>
-      <a href="../index.html"><p><i class="left-arrow"></i>Return to Home Page</p></a>
+      <a class="to-home-link" href="../index.html"><p><i class="left-arrow"></i>Return to Home Page</p></a>
     </li>
   </ul>
 
@@ -59,6 +59,65 @@
 <div id="scatterPlot" class="esri-widget">
   <b>Investigate the relationship between variables </b>
   <p>Each dot represents a given county</p>
+</div>
+
+<div id="information-menu" class="esri-widget">
+  <b>Learn how to use the mapper </b>
+  <p>This visualization depicts counties in the form of colored polygons spread across the country.</p>
+  <p>The visual characteristics of each polygon are influenced by a series of demographic and air
+    pollution variables, which can be selected in the "variable toggle" menu above this popup
+    window.</p>
+  <p>Each demographic variable dictates one color scale, while the air pollution
+    variable controls another, and the combination of them both is displayed in the choropleth.</p>
+
+  <p>A legend in the bottom-right corner of the screen offers
+    clarification about the chosen variables and their corresponding scales.</p>
+
+  <p>The demographic variables come from the 2010 edition of the US Decennial Census of
+    Population and Housing, a government initiative which aims to count the population of the
+    country and survey its underlying demographic characteristics (such as age, race, and housing status).</p>
+
+  <p>Conversely, the air pollution variables come from a research study conducted by Dr.
+    Heresh Amini and his collaborators at Harvard University. Their team developed a model to estimate
+    the concentrations of different chemical compounds in the air, all of which can be considered forms of
+    air pollution.
+
+  <p>While the underlying sources vary from component to component, higher concentrations are generally
+    linked to poor health outcomes. This mapper works with 5 of the components from the research study—
+    elemental carbon (EC), ammonium (NH4+), nitrate (NO3-), organic carbon (OC), and sulfate (SO42-). </p>
+  </p>
+
+  <p>The pollution dataset's spans 3,535 urban regions at a 50-m spatial resolution and all other non-urban areas at a 1-km resolution. While the data is available from 2000 to 2019, only 2010 values are currently hooked up to the mapper.</p>
+
+  <p>To find the county you live in— or any other county you're curious about— simply navigate to the search bar
+    in the top-right corner of the page and enter its name. The mapper screen will teleport you to
+    the county's coordinates, at which point you can click on the nearest colored polygon to reveal some
+    summary information.</p>
+
+  <p>Upon selecting a county, the resulting pop-up window provides an overview of specific values for the two chosen variables,
+    as well as how they each compare to the national average. The wording of the pop-up provides a
+    guide for how to interpret the data values. If the summary statistics at first do not load,
+    zoom in closer to the county and click on it once again.</p>
+
+  <p>To switch the combination of variables currently being viewed, look for the third icon down
+    from the top-left corner of the page. The variable selection menu consists of a series of
+    radio buttons, which will update the map, legend, and all other pop-ups when clicked. A total of 1 demographic and 1
+    air pollution variable are allowed to be graphed at a given point in time.</p>
+
+  <p>The relationship between each of these variables can be explored visually through the form of a scatterplot
+    window, which pops-up when clicking on the fourth icon down from the top-left corner of the
+    page. Each dot represents a county, with its name visible in the form of a tool-tip appearing upon
+    hover. </p>
+
+  <p>Clicking on a scatterplot dot teleports the map to the county's location. To change the scale, zoom
+    and pan on any white space in the scatterplot. If a county geometry has been
+    selected on the geographic map, the corresponding dot will appear to be colored purple in the scatterplot.
+    This provides an understanding of where a given county situates in relation to all other
+    counties based on those two variable values.</p>
+
+  <p>Development is still ongoing, and please feel free to report any bugs you encounter via the
+    "User Testing" link of the landing page footer. Thank you!</p>
+
 </div>
 
 <div id="variable-selector" class="esri-widget">

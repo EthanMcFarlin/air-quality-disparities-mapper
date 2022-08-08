@@ -260,6 +260,16 @@ require([
         view: view
     });
 
+    const legendExpand = new Expand({
+        expandIconClass: "esri-icon-key",
+        expanded: true,
+        view: view,
+        group: "bottom-right",
+        content: legend
+    });
+    view.ui.add(legendExpand, {
+        position: "bottom-right"
+    });
 
     function retrieveAverage(variableName) {
         return summaryStatistics({
@@ -269,9 +279,6 @@ require([
             return statistics.avg;
         });
     }
-
-
-    view.ui.add(legend, "bottom-right");
 
     const selectionMenu = document.getElementById("variable-selector");
     const contentInsidePopup = new Expand({
@@ -285,6 +292,20 @@ require([
         position: "top-left",
         index: 1
     });
+
+    const infoMenu = document.getElementById("information-menu");
+    const infoContent = new Expand({
+        expandIconClass: "esri-icon-description",
+        expanded: false,
+        view: view,
+        group: "top-left",
+        content: infoMenu
+    });
+    view.ui.add(infoContent, {
+        position: "top-left",
+        index: 3
+    });
+
 
     const scatterPlotContainer = document.getElementById("scatterPlot");
     const scatterPlotPopup = new Expand({
@@ -305,8 +326,7 @@ require([
     });
 
     view.ui.add(searchBar, {
-        position: "top-right",
-        index: 2
+        position: "top-right"
     });
 
     const demographicHolder = document.getElementById("demographic-holder");

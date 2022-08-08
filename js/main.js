@@ -289,6 +289,19 @@ require([
         index: 1
     });
 
+    const infoMenu = document.getElementById("information-menu");
+    const infoContent = new Expand({
+        expandIconClass: "esri-icon-description",
+        expanded: false,
+        view: view,
+        group: "top-left",
+        content: infoMenu
+    });
+    view.ui.add(infoContent, {
+        position: "top-left",
+        index: 3
+    });
+
     const scatterPlotContainer = document.getElementById("scatterPlot");
     const scatterPlotPopup = new Expand({
         expandIconClass: "esri-icon-line-chart",
