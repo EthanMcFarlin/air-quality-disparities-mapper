@@ -1,4 +1,4 @@
-let defaultSizeField = "ec_pred"
+let defaultSizeField = "ec_pred";
 let defaultSizeLegend = "predicted elemental carbon (height)";
 let defaultSizeLowerStop = 0.17;
 let defaultSizeUpperStop = 0.51;
@@ -14,6 +14,11 @@ let defaultColorLowerLabel = "0%";
 let defaultColorUpperLabel = "100%";
 let defaultColorPopupText = "represents the percentage (as a decimal) of the population in this county identifying as African American in 2010.";
 
+let current_GEOID = "";
+
+let saved_view;
+let saved_layer;
+
 let currentColorValueStore;
 let currentSizeValueStore;
 
@@ -27,7 +32,8 @@ require([
     "esri/smartMapping/symbology/relationship",
     "esri/smartMapping/renderers/relationship",
     "esri/smartMapping/statistics/summaryStatistics",
-], function(esriConfig, Map, MapView, FeatureLayer, Legend, Expand, relationshipSchemes, relationshipRendererCreator, summaryStatistics) {
+    "esri/widgets/Search",
+], function(esriConfig, Map, MapView, FeatureLayer, Legend, Expand, relationshipSchemes, relationshipRendererCreator, summaryStatistics, Search) {
 
     esriConfig.apiKey = "AAPKdfcc4a7dcc7e4176a137c38b87516e64P2haNjbiyKdPRWUk4feYG-Es6ebTY3T8bYJRXrSN-2gUKssSU5kF4T6brCoTDrEq";
 
@@ -180,6 +186,8 @@ require([
         },
     });
 
+    saved_layer = customLayer;
+
     const map = new Map({
         basemap: "gray-vector",
         layers: [customLayer]
@@ -191,6 +199,8 @@ require([
         center: [-90.1, 40.4],
         zoom: 3
     });
+
+    saved_view = view;
 
     const legend = new Legend({
         view: view
@@ -248,11 +258,35 @@ require([
         expandIconClass: "esri-icon-sliders-horizontal",
         expanded: true,
         view: view,
+        group: "top-left",
         content: selectionMenu
     });
     view.ui.add(contentInsidePopup, {
         position: "top-left",
         index: 1
+    });
+
+    const scatterPlotContainer = document.getElementById("scatterPlot");
+    const scatterPlotPopup = new Expand({
+        expandIconClass: "esri-icon-line-chart",
+        expanded: false,
+        view: view,
+        group: "top-left",
+        content: scatterPlotContainer
+    });
+    view.ui.add(scatterPlotPopup, {
+        position: "top-left",
+        index: 2
+    });
+
+    const searchBar = new Search({
+        view: view,
+        popupEnabled: false
+    });
+
+    view.ui.add(searchBar, {
+        position: "top-right",
+        index: 2
     });
 
     const demographicHolder = document.getElementById("demographic-holder");
@@ -324,6 +358,8 @@ require([
         defaultColorLowerLabel = lower_label;
         defaultColorUpperLabel = upper_label;
         defaultColorPopupText = popup_text;
+
+        refreshGraph();
 
         refreshDemographicRenderer(field, legend, lower_stop, upper_stop, lower_label, upper_label, popup_text);
     }
@@ -530,6 +566,8 @@ require([
         defaultSizeUpperLabel = upper_label;
         defaultSizePopupText = popup_text;
 
+        refreshGraph();
+
         refreshPollutionRenderer(field, legend, lower_stop, upper_stop, lower_label, upper_label, popup_text);
     }
 
@@ -707,8 +745,32 @@ require([
 
                 currentSizeValueStore = response.results[0].graphic.attributes[defaultSizeField];
                 currentColorValueStore = response.results[0].graphic.attributes[defaultColorField];
+
+                current_GEOID = response.results[0].graphic.attributes["GEOID10"];
+
+                refreshGraph();
+
             });
     });
 
 
 });
+
+function teleportToFeature(GEOID) {
+
+    saved_layer.queryFeatures({
+        where: `GEOID10='${GEOID}'`,
+        outFields: ["*"],
+        returnGeometry: true
+    }).then(function (output) {
+        if (!output.features) {
+            return;
+        }
+
+        saved_view.goTo({
+            target: output.features[0].geometry,
+            zoom: 10
+        });
+
+    })
+}

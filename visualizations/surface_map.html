@@ -27,6 +27,9 @@
     <!-- Local Styles -->
     <link rel="stylesheet" href="../css/style.css">
 
+    <!-- D3.js Script -->
+    <script src="http://d3js.org/d3.v4.min.js"></script>
+
     <!-- ArcGIS Javascript API Script -->
     <script src="https://js.arcgis.com/4.24/"></script>
 
@@ -56,6 +59,11 @@
 <!--    <input type="checkbox" id="color"><label for="color">Display all interior-->
 <!--    doors with a red color</label>-->
 <!--</div>-->
+
+<div id="scatterPlot" class="esri-widget">
+    <b>Investigate the relationship between variables </b>
+    <p>Each dot represents a given county</p>
+</div>
 
 <div id="variable-selector" class="esri-widget">
     <b class="menu-title">Select a combination of variables</b>
@@ -137,6 +145,9 @@
 
 <!-- Local Scripts -->
 <script src="../js/main.js"></script>
+
+<!-- D3.js Script -->
+<script src="../js/scatterplot.js"></script>
 
 <!-- Reference code for this site's scripts was sourced from the ArcGIS for Javascript 4.24 documentation, available
  here: https://developers.arcgis.com/javascript/latest/
