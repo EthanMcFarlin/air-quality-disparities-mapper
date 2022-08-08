@@ -15,9 +15,25 @@ function pageRedirect () {
 function modalPopup() {
     let sideBar = document.getElementById("sidebar-popup");
     sideBar.style.display = "block";
+
+    let body = document.body;
+    body.style.overflow = "hidden";
+    body.style.position = "fixed";
+
+    let darken = document.getElementById("darken");
+    darken.style.display = "block";
 }
 
 function closeModal() {
     let sideBar = document.getElementById("sidebar-popup");
     sideBar.style.display = "none";
+
+    let body = document.body;
+    body.style.overflow = "auto";
+    body.style.position = "absolute";
+
+    let darken = document.getElementById("darken");
+    darken.style.display = "none";
+
+
 }
