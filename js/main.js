@@ -265,6 +265,17 @@ require([
         view: view
     });
 
+    const legendExpand = new Expand({
+        expandIconClass: "esri-icon-key",
+        expanded: true,
+        view: view,
+        group: "bottom-right",
+        content: legend
+    });
+    view.ui.add(legendExpand, {
+        position: "bottom-right"
+    });
+
     function retrieveAverage(variableName) {
         return summaryStatistics({
             layer: customLayer,
@@ -273,8 +284,6 @@ require([
             return statistics.avg;
         });
     }
-
-    view.ui.add(legend, "bottom-right");
 
     const selectionMenu = document.getElementById("variable-selector");
     contentInsidePopup = new Expand({
